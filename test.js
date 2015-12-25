@@ -1,4 +1,5 @@
-window.onload = dowhat();
+window.onload = test();
+
 
 function dowhat() {
     var lis = document.querySelectorAll("li.pymk-card");
@@ -7,7 +8,7 @@ function dowhat() {
         var li = lis[j];
         var name = li.querySelector('a.name').textContent;
 
-        var keyword_1 = new RegExp(/vet/i);
+        var keyword_1 = new RegExp(/Marketing/i);
         var keyword_2 = new RegExp(/vét/i);
         var keyword_3 = new RegExp('vet');
 
@@ -15,10 +16,18 @@ function dowhat() {
         var ok_2 = keyword_2.test(name);
         var ok_3 = keyword_3.test(name);
 
+
         if (ok_1 || ok_2 || ok_3) {
             li.querySelector('button.bt-request-buffed').click();
             break
         }
 
+    }
+}
+
+
+function test() {
+    for (var i = 0; i < 2; i++) {
+        setTimeout("dowhat()", 3000 * i)
     }
 }
