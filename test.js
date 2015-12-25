@@ -44,7 +44,7 @@ function do_not_click() {
         var ok=ok_1 || ok_2 || ok_3;
 
         if (!ok) {
-            li.querySelector('bt-close').click();
+            li.querySelector('button.bt-close').click();
             break
         }
 
