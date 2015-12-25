@@ -21,6 +21,10 @@ function dowhat() {
             li.querySelector('button.bt-request-buffed').click();
             break
         }
+        else
+        {
+            li.querySelector('bt-close').click();
+        }
 
     }
 }
