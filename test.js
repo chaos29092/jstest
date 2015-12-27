@@ -8,16 +8,27 @@ function do_click() {
         var li = lis[j];
         var name = li.querySelector('a.name').textContent;
 
-        var keyword_1 = new RegExp(/Marketing/i);
+        var keyword_1 = new RegExp(/vet/i);
         var keyword_2 = new RegExp(/vét/i);
-        var keyword_3 = new RegExp('vet');
+        var keyword_3 = new RegExp(/animal Hospital/i);
+        var keyword_4 = new RegExp(/animal clinic/i);
+
+        var keyword_no_1 = new RegExp(/student/i);
+        var keyword_no_2 = new RegExp(/sale/i);
 
         var ok_1 = keyword_1.test(name);
         var ok_2 = keyword_2.test(name);
         var ok_3 = keyword_3.test(name);
+        var ok_4 = keyword_4.test(name);
+
+        var no_1 = keyword_no_1.test(name);
+        var no_2 = keyword_no_2.test(name);
+
+        var ok = ok_1 || ok_2 || ok_3 || ok_4;
+        var no = !(no_1 || no_2);
 
 
-        if (ok_1 || ok_2 || ok_3) {
+        if (ok && no) {
             li.querySelector('button.bt-request-buffed').click();
             break
         }
@@ -33,17 +44,26 @@ function do_not_click() {
         var li = lis[j];
         var name = li.querySelector('a.name').textContent;
 
-        var keyword_1 = new RegExp(/Marketing/i);
+        var keyword_1 = new RegExp(/vet/i);
         var keyword_2 = new RegExp(/vét/i);
-        var keyword_3 = new RegExp('vet');
+        var keyword_3 = new RegExp(/animal Hospital/i);
+        var keyword_4 = new RegExp(/animal clinic/i);
+
+        var keyword_no_1 = new RegExp(/student/i);
+        var keyword_no_2 = new RegExp(/sale/i);
 
         var ok_1 = keyword_1.test(name);
         var ok_2 = keyword_2.test(name);
         var ok_3 = keyword_3.test(name);
+        var ok_4 = keyword_4.test(name);
 
-        var ok=ok_1 || ok_2 || ok_3;
+        var no_1 = keyword_no_1.test(name);
+        var no_2 = keyword_no_2.test(name);
 
-        if (!ok) {
+        var ok = ok_1 || ok_2 || ok_3 || ok_4;
+        var no = no_1 || no_2;
+
+        if (!ok || no) {
             li.querySelector('button.bt-close').click();
             break
         }
@@ -51,10 +71,12 @@ function do_not_click() {
     }
 }
 
-//循环400次点击和点X
+//循环400次点击+点X+上下晃动
 function test() {
     for (var i = 0; i < 400; i++) {
         setTimeout("do_click()", 3000 * i);
-        setTimeout("do_not_click()", 2500 * i)
+        setTimeout("do_not_click()", 2500 * i);
+        setTimeout("scroll(0,100);", 2000 * i);
+        setTimeout("scroll(0,document.body.scrollHeight)", 2000 * i+1000);
     }
 }
