@@ -71,12 +71,21 @@ function do_not_click() {
     }
 }
 
-//循环400次点击+点X+上下晃动
+//滚100次，滚到最下面
+function scroll_down() {
+    for (var i = 0; i < 100; i++) {
+        setTimeout("scroll(0,100);", 3000 * i + 1000);
+        setTimeout("scroll(0,document.body.scrollHeight)", 3000 * i);
+    }
+}
+
+//循环400次点击+点X
 function test() {
+
+    scroll_down();
+
     for (var i = 0; i < 400; i++) {
-        setTimeout("do_click()", 3000 * i);
-        setTimeout("do_not_click()", 2500 * i);
-        setTimeout("scroll(0,100);", 2000 * i);
-        setTimeout("scroll(0,document.body.scrollHeight)", 2000 * i+1000);
+        setTimeout("do_click()", 3000 * i + 300000);
+        setTimeout("do_not_click()", 2500 * i + 300000);
     }
 }
