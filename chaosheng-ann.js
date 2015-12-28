@@ -1,5 +1,17 @@
 window.onload = test();
 
+var keyword_1 = new RegExp(/Sonographer/i);
+var keyword_2 = new RegExp(/Ultrasound/i);
+var keyword_3 = new RegExp(/Radio/i);
+var keyword_4 = new RegExp(/Diagnostic/i);
+
+var keyword_no_1 = new RegExp(/student/i);
+var keyword_no_2 = new RegExp(/sale/i);
+var keyword_no_3 = new RegExp(/market/i);
+var keyword_no_4 = new RegExp(/software/i);
+var keyword_no_5 = new RegExp(/product/i);
+var keyword_no_6 = new RegExp(/support/i);
+
 //满足关键词就点击
 function do_click() {
     var lis = document.querySelectorAll("li.pymk-card");
@@ -8,14 +20,6 @@ function do_click() {
         var li = lis[j];
         var name = li.querySelector('a.name').textContent;
 
-        var keyword_1 = new RegExp(/vet/i);
-        var keyword_2 = new RegExp(/vét/i);
-        var keyword_3 = new RegExp(/animal Hospital/i);
-        var keyword_4 = new RegExp(/animal clinic/i);
-
-        var keyword_no_1 = new RegExp(/student/i);
-        var keyword_no_2 = new RegExp(/sale/i);
-
         var ok_1 = keyword_1.test(name);
         var ok_2 = keyword_2.test(name);
         var ok_3 = keyword_3.test(name);
@@ -23,9 +27,13 @@ function do_click() {
 
         var no_1 = keyword_no_1.test(name);
         var no_2 = keyword_no_2.test(name);
+        var no_3 = keyword_no_3.test(name);
+        var no_4 = keyword_no_4.test(name);
+        var no_5 = keyword_no_5.test(name);
+        var no_6 = keyword_no_6.test(name);
 
         var ok = ok_1 || ok_2 || ok_3 || ok_4;
-        var no = !(no_1 || no_2);
+        var no = !(no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6);
 
 
         if (ok && no) {
@@ -44,14 +52,6 @@ function do_not_click() {
         var li = lis[j];
         var name = li.querySelector('a.name').textContent;
 
-        var keyword_1 = new RegExp(/vet/i);
-        var keyword_2 = new RegExp(/vét/i);
-        var keyword_3 = new RegExp(/animal Hospital/i);
-        var keyword_4 = new RegExp(/animal clinic/i);
-
-        var keyword_no_1 = new RegExp(/student/i);
-        var keyword_no_2 = new RegExp(/sale/i);
-
         var ok_1 = keyword_1.test(name);
         var ok_2 = keyword_2.test(name);
         var ok_3 = keyword_3.test(name);
@@ -59,9 +59,13 @@ function do_not_click() {
 
         var no_1 = keyword_no_1.test(name);
         var no_2 = keyword_no_2.test(name);
+        var no_3 = keyword_no_3.test(name);
+        var no_4 = keyword_no_4.test(name);
+        var no_5 = keyword_no_5.test(name);
+        var no_6 = keyword_no_6.test(name);
 
         var ok = ok_1 || ok_2 || ok_3 || ok_4;
-        var no = no_1 || no_2;
+        var no = no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6;
 
         if (!ok || no) {
             li.querySelector('button.bt-close').click();

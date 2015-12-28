@@ -1,4 +1,4 @@
-window.onload=scroll_down();
+window.onload = scroll_down();
 
 function scroll_down() {
     for (var i = 0; i < 100; i++) {
