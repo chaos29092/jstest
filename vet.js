@@ -19,6 +19,7 @@ function do_click() {
 
         var li = lis[j];
         var name = li.querySelector('a.name').textContent;
+        var url = li.querySelector('a.name').href;
 
         var ok_1 = keyword_1.test(name);
         var ok_2 = keyword_2.test(name);
