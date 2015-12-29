@@ -1,11 +1,9 @@
 window.onload = test();
 
-person=new Object();
-
-var myDB={
-    name:'added_list',
-    version:1,
-    db:null
+var myDB = {
+    name: 'added_list',
+    version: 1,
+    db: null
 };
 
 var user = document.getElementsByClassName('act-set-name-split-link')[0].textContent;
@@ -29,9 +27,9 @@ function do_click() {
 
         var li = lis[j];
         var name = li.querySelector('a.name').textContent;
-        var name_1 = li.querySelector('a.name').innerHTML.replace(/<span.*/,'');
+        var name_1 = li.querySelector('a.name').innerHTML.replace(/<span.*/, '');
         var headline = li.querySelector('span.a11y-headline').textContent;
-        var url = li.querySelector('a.name').href.replace(/&authType=.*/,'');
+        var url = li.querySelector('a.name').href.replace(/&authType=.*/, '');
 
         var ok_1 = keyword_1.test(name);
         var ok_2 = keyword_2.test(name);
@@ -49,19 +47,21 @@ function do_click() {
         var no = !(no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6);
 
 
-        if (ok && no) {
-                    openDB(myDB.name,1);
 
-                        person.name = name_1;
-                        person.url = url;
-                        person.headline =headline ;
-                        addData(myDB.db,user);
-                        li.querySelector('button.bt-request-buffed').click();
-                        break
+        var aa = ifDataByIndex(myDB.db,user,url);
 
+        if (ok && no && aa) {
 
-                }
-    }
+               var person = {
+                   "name": name_1,
+                   "url": url,
+                   "headline": headline
+               };
+               addData(myDB.db, user, person);
+               li.querySelector('button.bt-request-buffed').click();
+               break
+           }
+        }
 }
 
 //不满足关键词就点X
@@ -105,48 +105,50 @@ function scroll_down() {
 }
 
 //打开数据库
-function openDB (name,version) {
-    var version=version || 1;
-    var request=window.indexedDB.open(name,version);
-    request.onerror=function(e){
+function openDB(name, version) {
+    var version = version || 1;
+    var request = window.indexedDB.open(name, version);
+    request.onerror = function (e) {
         console.log(e.currentTarget.error.message);
     };
-    request.onsuccess=function(e){
-        myDB.db=e.target.result;
+    request.onsuccess = function (e) {
+        myDB.db = e.target.result;
     };
-    request.onupgradeneeded=function(e){
-        var db=e.target.result;
-        if(!db.objectStoreNames.contains(user)){
-            var store=db.createObjectStore(user,{keyPath: 'url'});
-            store.createIndex('nameIndex','name',{unique:false});
-            store.createIndex('headlineIndex','headline',{unique:false});
-            store.createIndex('urlIndex','url',{unique:true});
+    request.onupgradeneeded = function (e) {
+        var db = e.target.result;
+        if (!db.objectStoreNames.contains(user)) {
+            var store = db.createObjectStore(user, {keyPath: 'url'});
+            store.createIndex('nameIndex', 'name', {unique: false});
+            store.createIndex('headlineIndex', 'headline', {unique: false});
+            store.createIndex('urlIndex', 'url', {unique: true});
         }
-        console.log('DB version changed to '+version);
+        console.log('DB version changed to ' + version);
     };
 }
 
 //检查or添加
-function ifDataByIndex(db,storeName,url){
-    var transaction=db.transaction(storeName,'readwrite');
-    var store=transaction.objectStore(storeName);
+function ifDataByIndex(db, storeName, url) {
+    var transaction = db.transaction(storeName, 'readwrite');
+    var store = transaction.objectStore(storeName);
     var index = store.index("urlIndex");
 
-    index.get(url).onsuccess=function(e){
-        var name=e.target.result;
-        if (!name)
-        {
+    index.get(url).onsuccess = function (e) {
+        var name = e.target.result;
+        if (!name) {
             return true
+        }
+        else{
+            return false
         }
 
     }
 }
 
-function addData(db,storeName){
-    var transaction=db.transaction(storeName,'readwrite');
-    var store=transaction.objectStore(storeName);
+function addData(db, storeName, data) {
+    var transaction = db.transaction(storeName, 'readwrite');
+    var store = transaction.objectStore(storeName);
 
-    store.add(person)
+    store.add(data)
 }
 
 //循环400次点击+点X
@@ -154,8 +156,8 @@ function test() {
 
     //scroll_down();
 
-    for (var i = 0; i < 20; i++) {
-        setTimeout("do_click()", 3000 * i );
+    for (var i = 1; i < 20; i++) {
+        setTimeout("do_click()", 3000 * i);
         setTimeout("do_not_click()", 2500 * i);
     }
 }

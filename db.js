@@ -71,4 +71,5 @@ function addData(db, storeName) {
 
 openDB(myDB.name, 1);
 //setTimeout("addData(myDB.db,user)",100);
-setTimeout("addDataByIndex(myDB.db,user)", 100);
+//setTimeout("addDataByIndex(myDB.db,user)", 100);
+addDataByIndex(myDB.db,user);
