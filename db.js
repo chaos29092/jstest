@@ -1,64 +1,75 @@
-var students=[{
-    id:1001,
-    name:"Byron",
-    age:23
-},{
-    id:1002,
-    name:"Frank",
-    age:30
-},{
-    id:1003,
-    name:"Aaron",
-    age:26
-}];
+    var students=[{
+        url:1001,
+        name:"Byron",
+        headline:23
+    },{
+        url:1002,
+        name:"Frank",
+        headline:30
+    },{
+        url:1003,
+        name:"Aaron",
+        headline:26
+    }];
 
-var myDB={
-    name:'student',
-    version:1,
-    db:null
-};
+    person=new Object();
 
-function openDB (name,version) {
-    var version=version || 1;
-    var request=window.indexedDB.open(name,version);
-    request.onerror=function(e){
-        console.log(e.currentTarget.error.message);
+    var myDB={
+        name:'added_list',
+        version:1,
+        db:null
     };
-    request.onsuccess=function(e){
-        myDB.db=e.target.result;
-    };
-    request.onupgradeneeded=function(e){
-        var db=e.target.result;
-        if(!db.objectStoreNames.contains('students')){
-            var store=db.createObjectStore('students',{keyPath: 'id'});
-            store.createIndex('nameIndex','name',{unique:true});
-            store.createIndex('ageIndex','age',{unique:false});
+
+    var user = document.getElementsByClassName('act-set-name-split-link')[0].textContent;
+
+    function openDB (name,version) {
+        var version=version || 1;
+        var request=window.indexedDB.open(name,version);
+        request.onerror=function(e){
+            console.log(e.currentTarget.error.message);
+        };
+        request.onsuccess=function(e){
+            myDB.db=e.target.result;
+        };
+        request.onupgradeneeded=function(e){
+            var db=e.target.result;
+            if(!db.objectStoreNames.contains(user)){
+                var store=db.createObjectStore(user,{keyPath: 'url'});
+                store.createIndex('nameIndex','name',{unique:false});
+                store.createIndex('headlineIndex','headline',{unique:false});
+                store.createIndex('urlIndex','url',{unique:true});
+            }
+            console.log('DB version changed to '+version);
+        };
+    }
+
+    function addDataByIndex(db,storeName){
+        var transaction=db.transaction(storeName,'readwrite');
+        var store=transaction.objectStore(storeName);
+        var index = store.index("urlIndex");
+
+        index.get('23').onsuccess=function(e){
+            var name=e.target.result;
+            if (!name)
+            {
+                person.name = 'aa';
+                person.url = 23;
+                person.headline = 333;
+                store.add(person);
+            }
+
         }
-        console.log('DB version changed to '+version);
-    };
-}
-
-function getDataByIndex(db,storeName){
-    var transaction=db.transaction(storeName,'readwrite');
-    var store=transaction.objectStore(storeName);
-    var index = store.index("nameIndex");
-    index.get('Byron').onsuccess=function(e){
-        var student=e.target.result;
-        console.log(student.id);
-    };
-    index.get('Byron').onerror=function(e){
-        store.add();
     }
-}
 
-function addData(db,storeName){
-    var transaction=db.transaction(storeName,'readwrite');
-    var store=transaction.objectStore(storeName);
+    function addData(db,storeName){
+        var transaction=db.transaction(storeName,'readwrite');
+        var store=transaction.objectStore(storeName);
 
-    for(var i=0;i<students.length;i++){
-        store.add(students[i]);
+        for(var i=0;i<students.length;i++){
+            store.add(students[i]);
+        }
     }
-}
 
-openDB(myDB.name,1);
-setTimeout("addData(myDB.db,'students')",100);
+    openDB(myDB.name,1);
+    //setTimeout("addData(myDB.db,user)",100);
+    setTimeout("addDataByIndex(myDB.db,user)",100);

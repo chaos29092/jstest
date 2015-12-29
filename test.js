@@ -1,5 +1,6 @@
 window.onload = test();
 
+var user = document.getElementsByClassName('act-set-name-split-link')[0].textContent;
 var keyword_1 = new RegExp(/market/i);
 
 function do_click() {
@@ -8,8 +9,9 @@ function do_click() {
 
         var li = lis[j];
         var name = li.querySelector('a.name').textContent;
-        var full_url = li.querySelector('a.name').href;
-        var url=full_url.replace(/&authType=.*/,'');
+        var name_1 = li.querySelector('a.name').innerHTML.replace(/<span.*/,'');
+        var headline = li.querySelector('span.a11y-headline').textContent;
+        var url = li.querySelector('a.name').href.replace(/&authType=.*/,'');
 
         var ok_1 = keyword_1.test(name);
         //var ok_2 = keyword_2.test(name);
@@ -28,7 +30,7 @@ function do_click() {
 
 
         if (ok_1) {
-            alert(url);
+            alert(user);
             break
         }
 
