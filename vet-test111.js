@@ -1,4 +1,4 @@
-window.onload = openDB(myDB.db,1);
+window.onload = test();
 
 person=new Object();
 
@@ -8,11 +8,9 @@ var myDB={
     db:null
 };
 
-
-
 var user = document.getElementsByClassName('act-set-name-split-link')[0].textContent;
 
-var keyword_1 = new RegExp(/market/i);
+var keyword_1 = new RegExp(/m/i);
 var keyword_2 = new RegExp(/vét/i);
 var keyword_3 = new RegExp(/animal Hospital/i);
 var keyword_4 = new RegExp(/animal clinic/i);
@@ -52,15 +50,15 @@ function do_click() {
 
 
         if (ok && no) {
-                    if (ifDataByIndex(myDB.db,user,url))
-                    {
+                    openDB(myDB.name,1);
+
                         person.name = name_1;
                         person.url = url;
                         person.headline =headline ;
                         addData(myDB.db,user);
                         li.querySelector('button.bt-request-buffed').click();
                         break
-                    }
+
 
                 }
     }
@@ -157,9 +155,8 @@ function test() {
     //scroll_down();
 
     for (var i = 0; i < 20; i++) {
-        setTimeout("do_click()", 3000 * i + 300000);
-        setTimeout("do_not_click()", 2500 * i + 300000);
+        setTimeout("do_click()", 3000 * i );
+        setTimeout("do_not_click()", 2500 * i);
     }
 }
 
-test();
