@@ -4,6 +4,8 @@ var keyword_1 = new RegExp(/vet/i);
 var keyword_2 = new RegExp(/vét/i);
 var keyword_3 = new RegExp(/animal Hospital/i);
 var keyword_4 = new RegExp(/animal clinic/i);
+var keyword_5 = new RegExp(/pet clinic/i);
+var keyword_6 = new RegExp(/pet Hospital/i);
 
 var keyword_no_1 = new RegExp(/student/i);
 var keyword_no_2 = new RegExp(/sale/i);
@@ -25,6 +27,8 @@ function do_click() {
         var ok_2 = keyword_2.test(name);
         var ok_3 = keyword_3.test(name);
         var ok_4 = keyword_4.test(name);
+        var ok_5 = keyword_5.test(name);
+        var ok_6 = keyword_6.test(name);
 
         var no_1 = keyword_no_1.test(name);
         var no_2 = keyword_no_2.test(name);
@@ -33,7 +37,7 @@ function do_click() {
         var no_5 = keyword_no_5.test(name);
         var no_6 = keyword_no_6.test(name);
 
-        var ok = ok_1 || ok_2 || ok_3 || ok_4;
+        var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5||ok_6;
         var no = !(no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6);
 
 
@@ -57,6 +61,8 @@ function do_not_click() {
         var ok_2 = keyword_2.test(name);
         var ok_3 = keyword_3.test(name);
         var ok_4 = keyword_4.test(name);
+        var ok_5 = keyword_5.test(name);
+        var ok_6 = keyword_6.test(name);
 
         var no_1 = keyword_no_1.test(name);
         var no_2 = keyword_no_2.test(name);
@@ -65,7 +71,7 @@ function do_not_click() {
         var no_5 = keyword_no_5.test(name);
         var no_6 = keyword_no_6.test(name);
 
-        var ok = ok_1 || ok_2 || ok_3 || ok_4;
+        var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5||ok_6;
         var no = no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6;
 
         if (!ok || no) {
@@ -87,10 +93,8 @@ function scroll_down() {
 //循环400次点击+点X
 function test() {
 
-    scroll_down();
-
     for (var i = 0; i < 450; i++) {
-        setTimeout("do_click()", 3000 * i + 300000);
-        setTimeout("do_not_click()", 2500 * i + 300000);
+        setTimeout("do_click()", 3000 * i);
+        setTimeout("do_not_click()", 2500 * i);
     }
 }
