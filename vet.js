@@ -89,7 +89,7 @@ function test() {
 
     scroll_down();
 
-    for (var i = 0; i < 400; i++) {
+    for (var i = 0; i < 450; i++) {
         setTimeout("do_click()", 3000 * i + 300000);
         setTimeout("do_not_click()", 2500 * i + 300000);
     }
