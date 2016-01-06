@@ -1,10 +1,10 @@
 window.onload = test();
 
-var keyword_1 = new RegExp(/Sonographer/i);
-var keyword_2 = new RegExp(/Ultrasound/i);
-var keyword_3 = new RegExp(/Radio/i);
-var keyword_4 = new RegExp(/Diagnostic/i);
-var keyword_5 = new RegExp(/Radió/i);
+var keyword_1 = new RegExp(/dental/i);
+var keyword_2 = new RegExp(/dentist/i);
+var keyword_3 = new RegExp(/odontolog/i);
+var keyword_4 = new RegExp(/odontolog/i);
+var keyword_5 = new RegExp(/dental/i);
 
 var keyword_no_1 = new RegExp(/student/i);
 var keyword_no_2 = new RegExp(/sale/i);
