@@ -6,7 +6,10 @@ var keyword_3 = new RegExp(/Estetic/i);
 var keyword_4 = new RegExp(/Plasti/i);
 var keyword_5 = new RegExp(/Dermatolo/i);
 var keyword_6 = new RegExp(/Aesthetic/i);
-var keyword_7 = new RegExp(/ spa /i);
+var keyword_7 = new RegExp(/spa /i);
+var keyword_8 = new RegExp(/skin/i);
+var keyword_9 = new RegExp(/Cosmetic/i);
+var keyword_10 = new RegExp(/Dermatólo/i);
 
 var keyword_no_1 = new RegExp(/student/i);
 var keyword_no_2 = new RegExp(/sale/i);
@@ -14,6 +17,7 @@ var keyword_no_3 = new RegExp(/market/i);
 var keyword_no_4 = new RegExp(/software/i);
 var keyword_no_5 = new RegExp(/product/i);
 var keyword_no_6 = new RegExp(/support/i);
+var keyword_no_7 = new RegExp(/dental/i);
 
 //满足关键词就点击
 function do_click() {
@@ -31,6 +35,9 @@ function do_click() {
         var ok_5 = keyword_5.test(name);
         var ok_6 = keyword_6.test(name);
         var ok_7 = keyword_7.test(name);
+        var ok_8 = keyword_8.test(name);
+        var ok_9 = keyword_9.test(name);
+        var ok_10 = keyword_10.test(name);
 
         var no_1 = keyword_no_1.test(name);
         var no_2 = keyword_no_2.test(name);
@@ -38,9 +45,10 @@ function do_click() {
         var no_4 = keyword_no_4.test(name);
         var no_5 = keyword_no_5.test(name);
         var no_6 = keyword_no_6.test(name);
+        var no_7 = keyword_no_7.test(name);
 
-        var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5||ok_6||ok_7;
-        var no = !(no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6);
+        var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5||ok_6||ok_7||ok_8||ok_9||ok_10;
+        var no = !(no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6||no_7);
 
 
         if (ok && no) {
@@ -66,6 +74,9 @@ function do_not_click() {
         var ok_5 = keyword_5.test(name);
         var ok_6 = keyword_6.test(name);
         var ok_7 = keyword_7.test(name);
+        var ok_8 = keyword_8.test(name);
+        var ok_9 = keyword_9.test(name);
+        var ok_10 = keyword_10.test(name);
 
         var no_1 = keyword_no_1.test(name);
         var no_2 = keyword_no_2.test(name);
@@ -73,9 +84,10 @@ function do_not_click() {
         var no_4 = keyword_no_4.test(name);
         var no_5 = keyword_no_5.test(name);
         var no_6 = keyword_no_6.test(name);
+        var no_7 = keyword_no_7.test(name);
 
-        var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5||ok_6||ok_7;
-        var no = no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6;
+        var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5||ok_6||ok_7||ok_8||ok_9||ok_10;
+        var no = no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6||no_7;
 
         if (!ok || no) {
             li.querySelector('button.bt-close').click();
