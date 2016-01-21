@@ -3,8 +3,8 @@ window.onload = test();
 var keyword_1 = new RegExp(/dental/i);
 var keyword_2 = new RegExp(/dentist/i);
 var keyword_3 = new RegExp(/odontolog/i);
-var keyword_4 = new RegExp(/odontolog/i);
-var keyword_5 = new RegExp(/dental/i);
+var keyword_4 = new RegExp(/odontol og/i);
+var keyword_5 = new RegExp(/denture/i);
 
 var keyword_no_1 = new RegExp(/student/i);
 var keyword_no_2 = new RegExp(/sale/i);
