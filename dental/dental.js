@@ -4,7 +4,7 @@ var keyword_1 = new RegExp(/dental/i);
 var keyword_2 = new RegExp(/dentist/i);
 var keyword_3 = new RegExp(/odontolog/i);
 var keyword_4 = new RegExp(/odontol og/i);
-var keyword_5 = new RegExp(/denture/i);
+var keyword_5 = new RegExp(/dentur/i);
 
 var keyword_no_1 = new RegExp(/student/i);
 var keyword_no_2 = new RegExp(/sale/i);
@@ -91,7 +91,7 @@ function test() {
 
     scroll_down();
 
-    for (var i = 0; i < 400; i++) {
+    for (var i = 0; i < 500; i++) {
         setTimeout("do_click()", 3000 * i + 300000);
         setTimeout("do_not_click()", 2500 * i + 300000);
     }
