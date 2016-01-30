@@ -12,6 +12,8 @@ var keyword_no_3 = new RegExp(/market/i);
 var keyword_no_4 = new RegExp(/software/i);
 var keyword_no_5 = new RegExp(/product/i);
 var keyword_no_6 = new RegExp(/support/i);
+var keyword_no_7 = new RegExp(/assistant/i);
+var keyword_no_8 = new RegExp(/Hygienist/i);
 
 //满足关键词就点击
 function do_click() {
@@ -33,9 +35,11 @@ function do_click() {
         var no_4 = keyword_no_4.test(name);
         var no_5 = keyword_no_5.test(name);
         var no_6 = keyword_no_6.test(name);
+        var no_7 = keyword_no_7.test(name);
+        var no_8 = keyword_no_8.test(name);
 
         var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5;
-        var no = !(no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6);
+        var no = !(no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6||no_7||no_8);
 
 
         if (ok && no) {
@@ -66,9 +70,11 @@ function do_not_click() {
         var no_4 = keyword_no_4.test(name);
         var no_5 = keyword_no_5.test(name);
         var no_6 = keyword_no_6.test(name);
+        var no_7 = keyword_no_7.test(name);
+        var no_8 = keyword_no_8.test(name);
 
         var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5;
-        var no = no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6;
+        var no = no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6||no_7||no_8;
 
         if (!ok || no) {
             li.querySelector('button.bt-close').click();
