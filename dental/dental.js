@@ -5,6 +5,7 @@ var keyword_2 = new RegExp(/dentist/i);
 var keyword_3 = new RegExp(/odontolog/i);
 var keyword_4 = new RegExp(/odontólo/i);
 var keyword_5 = new RegExp(/dentur/i);
+var keyword_6 = new RegExp(/Dentária/i);
 
 var keyword_no_1 = new RegExp(/student/i);
 var keyword_no_2 = new RegExp(/sale/i);
@@ -28,6 +29,7 @@ function do_click() {
         var ok_3 = keyword_3.test(name);
         var ok_4 = keyword_4.test(name);
         var ok_5 = keyword_5.test(name);
+        var ok_6 = keyword_6.test(name);
 
         var no_1 = keyword_no_1.test(name);
         var no_2 = keyword_no_2.test(name);
@@ -38,7 +40,7 @@ function do_click() {
         var no_7 = keyword_no_7.test(name);
         var no_8 = keyword_no_8.test(name);
 
-        var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5;
+        var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5||ok_6;
         var no = !(no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6||no_7||no_8);
 
 
@@ -63,6 +65,7 @@ function do_not_click() {
         var ok_3 = keyword_3.test(name);
         var ok_4 = keyword_4.test(name);
         var ok_5 = keyword_5.test(name);
+        var ok_6 = keyword_6.test(name);
 
         var no_1 = keyword_no_1.test(name);
         var no_2 = keyword_no_2.test(name);
@@ -73,7 +76,7 @@ function do_not_click() {
         var no_7 = keyword_no_7.test(name);
         var no_8 = keyword_no_8.test(name);
 
-        var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5;
+        var ok = ok_1 || ok_2 || ok_3 || ok_4||ok_5||ok_6;
         var no = no_1 || no_2 || no_3 || no_4 || no_4 || no_5 || no_6||no_7||no_8;
 
         if (!ok || no) {
